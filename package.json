@@ -1,6 +1,6 @@
 {
   "name": "kashyyyk",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "author": {
     "name": "Matteo Gabriele",
@@ -30,8 +30,7 @@
   "types": "./dist/kashyyyk.d.ts",
   "files": ["dist"],
   "peerDependencies": {
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -45,12 +44,6 @@
     "vite": "^6.1.0",
     "vite-plugin-dts": "^4.5.0",
     "vitest": "^3.0.5",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
-  },
-  "peerDependenciesMeta": {
-    "vue-router": {
-      "optional": true
-    }
+    "vue": "^3.5.13"
   }
 }

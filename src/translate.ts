@@ -1,3 +1,4 @@
+import { locale } from ".";
 import { getSettings } from "./settings";
 import type { GetObject, TranslationParams } from "./types";
 
@@ -51,13 +52,13 @@ function interpolate(message: string, params: TranslationParams): string {
 }
 
 export function t(key: string, params?: TranslationParams): string {
-  const { translations, locale } = getSettings();
+  const { translations } = getSettings();
 
-  if (!locale) {
+  if (!locale.value) {
     return key;
   }
 
-  const translationValue = translations[locale];
+  const translationValue = translations[locale.value];
 
   if (!translationValue || typeof translationValue === "string") {
     return key;

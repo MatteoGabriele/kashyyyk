@@ -17,12 +17,11 @@ export default defineConfig({
       fileName: "kashyyyk",
     },
     rollupOptions: {
-      external: ["vue", "vue-router"],
+      external: ["vue"],
       output: {
         exports: "named",
         globals: {
-          vue: "Vue",
-          "vue-router": "VueRouter"
+          vue: "Vue"
         },
       },
     },
