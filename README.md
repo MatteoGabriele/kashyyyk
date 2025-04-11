@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/577d4b61-73e8-4650-8a3a-3913bf8e2d53" width="350" />
+  <img src="https://github.com/user-attachments/assets/577d4b61-73e8-4650-8a3a-3913bf8e2d53" width="250" />
 </p>
 
 # Kashyyyk
