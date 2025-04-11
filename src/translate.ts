@@ -1,17 +1,5 @@
-type TranslationParams = {
-  [key: string]: string | TranslationParams;
-};
-
-type Locale = string;
-type Translation = {
-  [K in Locale]?: TranslationParams;
-};
-
-const translate: Translation = {};
-
-type GetObject = {
-  [key: string]: string | GetObject;
-};
+import { getSettings } from "./settings";
+import type { GetObject, TranslationParams } from "./types";
 
 function get(path: string, obj: GetObject): string {
   const keys = path.split(".");
@@ -63,13 +51,19 @@ function interpolate(message: string, params: TranslationParams): string {
 }
 
 export function t(key: string, params?: TranslationParams): string {
-  const locale = translate.locale?.en;
+  const { translations, locale } = getSettings();
 
-  if (!locale || typeof locale === "string") {
+  if (!locale) {
     return key;
   }
 
-  const value = get(key, locale);
+  const translationValue = translations[locale];
+
+  if (!translationValue || typeof translationValue === "string") {
+    return key;
+  }
+
+  const value = get(key, translationValue);
 
   if (value === "") {
     return key;

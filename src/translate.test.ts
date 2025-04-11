@@ -1,4 +1,19 @@
+import { updateSettings } from "./settings";
 import { t } from "./translate";
+
+updateSettings({
+  translations: {
+    en: {
+      hello: "ciao",
+      greeting: {
+        hello: "ciao",
+      },
+      dynamicGreeting: {
+        hello: "ciao, {name}",
+      },
+    },
+  },
+});
 
 describe("translate", () => {
   it("should translate from a single key", () => {
