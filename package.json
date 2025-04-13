@@ -1,5 +1,6 @@
 {
   "name": "kashyyyk",
+  "description": "A simple internationalization Vuejs plugin designed to be minimal and lightweight",
   "version": "0.5.1",
   "type": "module",
   "author": {
@@ -18,6 +19,15 @@
     "validate": "npm run typecheck && npm run lint && npm run test:once && npm run build && publint run --strict",
     "prepublishOnly": "npm run lint && npm run test:once && npm run build"
   },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "translations",
+    "i18n",
+    "internationalization",
+    "minimal",
+    "light"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {
