@@ -24,7 +24,7 @@ A simple internationalization (i18n) Vuejs plugin designed to be minimal and lig
 ### Installation
 
 ```sh
-pnpm add kashyyyk
+npm install kashyyyk
 ```
 
 ### Usage
