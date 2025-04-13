@@ -19,7 +19,6 @@ A simple internationalization (i18n) Vuejs plugin designed to be minimal and lig
 ## Highlights
 - Translate supporting nested objects, custom properties, and pluralization
 - Small bundle size at less than 700 bytes
-- Yes, when I came out with the [name](https://starwars.fandom.com/wiki/Kashyyyk/Legends), I was watching Star Wars
 
 ### Installation
 
@@ -40,7 +39,7 @@ createI18n({
     },
     en: {
       greeting: "Hello",
-    },
+    }
   },
 });
 ```
@@ -64,13 +63,13 @@ createI18n({
   locale: "en",
   translations: {
     it: {
-      greeting: "Ciao, { name }",
-      apples: "Non ci sono mele | C'è una sola mela | Ci sono {count} mele"
+      greeting: "Che la Forza ti guidi, Maestro { name }",
+      lightsabers: "Non ci sono spade laser | C'è una sola spada laser | Ci sono {count} spade laser",
     },
     en: {
-      greeting: "Hello, { name }",
-      apples: "There are no apples | There is 1 apple | There are {count} apples"
-    },
+      greeting: "May the Force guide you, Master { name }",
+      lightsabers: "There are no lightsabers | There is 1 lightsaber | There are {count} lightsabers",
+    }
   },
 });
 ```
@@ -82,7 +81,7 @@ const count = ref<number>(0)
 </script>
 
 <template>
-  <div>{{ t("greeting", { name: "Michael J. Fox" }) }}</div>
-  <div>{{ t("apples", { count }) }}</div>
+  <div>{{ t("greeting", { name: "Yoda" }) }}</div>
+  <div>{{ t("lightsabers", { count }) }}</div>
 </template>
 ```
