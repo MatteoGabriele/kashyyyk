@@ -63,11 +63,11 @@ createI18n({
   locale: "en",
   translations: {
     it: {
-      greeting: "Che la Forza ti guidi, Maestro { name }",
+      greeting: "Che la Forza ti guidi, Maestro {name}",
       lightsabers: "Non ci sono spade laser | C'è una sola spada laser | Ci sono {count} spade laser",
     },
     en: {
-      greeting: "May the Force guide you, Master { name }",
+      greeting: "May the Force guide you, Master {name}",
       lightsabers: "There are no lightsabers | There is 1 lightsaber | There are {count} lightsabers",
     }
   },
