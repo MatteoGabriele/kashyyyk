@@ -27,9 +27,11 @@ npm install kashyyyk
 ```
 
 ### Usage
-Add default locale and translations like all major i18n libraries
-```ts
-import { createI18n } from "kashyyyk";
+Add default locale and translations like all major i18n libraries.
+Use the "t" function to render the translation based on the selected locale.
+```html
+<script setup lang="ts">
+import { createI18n, useI18n } from "kashyyyk";
 
 createI18n({
   locale: "en",
@@ -42,11 +44,8 @@ createI18n({
     }
   },
 });
-```
-Use the "t" function to render the translation based on the currently selected locale
-```html
-<script setup lang="ts">
-import { t } from "kashyyyk";
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -54,34 +53,71 @@ import { t } from "kashyyyk";
 </template>
 ```
 
-## Other usages
+## Other translation options
 Translation object accepts custom variables and pluralization
-```js
-import { createI18n } from "kashyyyk";
+```html
+<script setup lang="ts">
+import { ref } from "vue";
+import { createI18n, useI18n } from "kashyyyk";
 
 createI18n({
   locale: "en",
   translations: {
     it: {
       greeting: "Che la Forza ti guidi, Maestro {name}",
-      lightsabers: "Non ci sono spade laser | C'è una sola spada laser | Ci sono {count} spade laser",
+      lightsabers:
+        "Non ci sono spade laser | C'è una sola spada laser | Ci sono {count} spade laser",
     },
     en: {
       greeting: "May the Force guide you, Master {name}",
-      lightsabers: "There are no lightsabers | There is 1 lightsaber | There are {count} lightsabers",
-    }
+      lightsabers:
+        "There are no lightsabers | There is 1 lightsaber | There are {count} lightsabers",
+    },
   },
 });
-```
-```html
-<script setup lang="ts">
-import { t } from "kashyyyk";
 
-const count = ref<number>(0)
+const { t } = useI18n();
+const count = ref<number>(0);
 </script>
 
 <template>
-  <div>{{ t("greeting", { name: "Yoda" }) }}</div>
-  <div>{{ t("lightsabers", { count }) }}</div>
+  <p>{{ t("lightsabers", { count }) }}</p>
+
+  <button @click="count++">Increase count</button>
+</template>
+
+```
+
+## Change locale
+```html
+<script setup lang="ts">
+import { createI18n, useI18n } from "kashyyyk";
+
+const { t, locale } = useI18n();
+
+createI18n({
+  locale: "en",
+  translations: {
+    it: {
+      lightsabers:
+        "Non ci sono spade laser | C'è una sola spada laser | Ci sono {count} spade laser",
+    },
+    en: {
+      lightsabers:
+        "There are no lightsabers | There is 1 lightsaber | There are {count} lightsabers",
+    },
+  },
+});
+</script>
+
+<template>
+  <div>
+    <p>{{ t("lightsabers", { count: 1 }) }}</p>
+
+    <button @click="locale = 'it'">Italian</button>
+
+    <p>current selected language: {{ locale }}</p>
+  </div>
 </template>
 ```
+
