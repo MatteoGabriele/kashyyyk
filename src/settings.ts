@@ -1,15 +1,30 @@
+import { type Reactive, reactive, toRefs } from "vue";
 import type { Settings } from "./types";
 
-let settings: Settings = {
+const settings: Reactive<Settings> = reactive({
   locale: "en",
   fallbackLocale: "en",
-  translations: {},
+});
+
+export type UseLocaleReturn = {
+  changeLocale: (locale: string) => void;
 };
 
-export function updateSettings(newSettings: Partial<Settings>): void {
-  settings = { ...settings, ...newSettings };
+export function useLocale() {
+  function changeLocale(locale: string): void {
+    if (settings.locale === locale) {
+      return;
+    }
+
+    settings.locale = locale;
+  }
+
+  return {
+    ...toRefs(settings),
+    changeLocale,
+  };
 }
 
-export function getSettings(): Settings {
-  return settings;
+export function updateSettings(newSettings: Partial<Settings>): void {
+  Object.assign(settings, newSettings);
 }

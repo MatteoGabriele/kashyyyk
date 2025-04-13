@@ -1,7 +1,6 @@
-import { updateSettings } from "./settings";
-import { t } from "./translate";
+import { createI18n, t } from ".";
 
-updateSettings({
+createI18n({
   translations: {
     en: {
       hello: "ciao",

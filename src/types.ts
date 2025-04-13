@@ -8,12 +8,8 @@ export type Translation = {
   [K in Locale]?: TranslationParams;
 };
 
-export type GetObject = {
-  [key: string]: string | GetObject;
-};
-
 export type Settings = {
-  locale?: Locale;
-  fallbackLocale?: string;
-  translations: Translation;
+  locale: Locale;
+  fallbackLocale: string;
+  translations?: Translation;
 };
