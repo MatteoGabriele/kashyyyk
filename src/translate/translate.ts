@@ -1,6 +1,5 @@
-import { useLocale } from "./settings";
-import type { TranslationParams } from "./types";
-import { get } from "./utils";
+import { type TranslationParams, useLocale } from "@/locale";
+import { get } from "@/utils";
 
 function interpolate(message: string, params: TranslationParams): string {
   if (!params) {
@@ -35,7 +34,7 @@ function interpolate(message: string, params: TranslationParams): string {
 export function t(key: string, params?: TranslationParams): string {
   const { translations, locale } = useLocale();
 
-  if (!locale.value || !translations?.value) {
+  if (!locale?.value || !translations?.value) {
     return key;
   }
 

@@ -1,6 +1,8 @@
-import { createI18n, t } from ".";
+import { createI18n } from "@/create-i18n";
+import { t } from "@/translate";
 
 createI18n({
+  locale: "en",
   translations: {
     en: {
       hello: "ciao",
