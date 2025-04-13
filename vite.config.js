@@ -1,12 +1,12 @@
 import path from "node:path";
-import { defineConfig } from "vitest/config";
 import dts from "vite-plugin-dts";
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
-    }
+      "@": path.resolve(__dirname, "./src"),
+    },
   },
   build: {
     outDir: "dist",
@@ -21,7 +21,7 @@ export default defineConfig({
       output: {
         exports: "named",
         globals: {
-          vue: "Vue"
+          vue: "Vue",
         },
       },
     },
@@ -37,7 +37,7 @@ export default defineConfig({
     globals: true,
     mockReset: true,
     coverage: {
-      reporter: ['text', 'html'],
-    }
+      reporter: ["text", "html"],
+    },
   },
 });
