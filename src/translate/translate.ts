@@ -1,37 +1,55 @@
 import { type TranslationParams, useLocale } from "@/locale";
 import { get } from "@/utils";
 
-function interpolate(message: string, params: TranslationParams): string {
+export type InterpolateParams = TranslationParams | { count: number };
+export type TranslateParams = InterpolateParams;
+
+function interpolate(message: string, params: InterpolateParams): string {
   if (!params) {
     return message;
   }
 
-  const betweenCurlyBracesRegEx = new RegExp(/\{.*?}s?/g);
-  const matchedCurlies = message.match(betweenCurlyBracesRegEx);
-  const paramsKeys = Object.keys(params);
-
   let newMessage = message;
 
-  if (!matchedCurlies) {
-    return message;
+  const messagesPiped = message.split("|").map((pipe) => pipe.trim());
+
+  if ("count" in params && messagesPiped.length > 1) {
+    const count = params.count;
+
+    if (count === 0 && messagesPiped.length >= 1) {
+      newMessage = messagesPiped[0];
+    } else if (count === 1 && messagesPiped.length >= 2) {
+      newMessage = messagesPiped[1];
+    } else if (messagesPiped.length >= 3) {
+      newMessage = messagesPiped[2];
+    }
   }
 
-  matchedCurlies.forEach((match, i) => {
-    const prop = match.slice(1, -1);
-    const value = params[prop];
-    const paramKey = paramsKeys[i];
+  const betweenCurlyBracesRegEx = new RegExp(/\{.*?}s?/g);
+  const matchedCurlies = message.match(betweenCurlyBracesRegEx);
 
-    if ((!value && paramKey) || typeof value !== "string") {
-      return message;
-    }
+  if (matchedCurlies) {
+    newMessage = matchedCurlies.reduce((processedMessage, match) => {
+      const prop = match.slice(1, -1);
 
-    newMessage = newMessage.replace(match, value);
-  });
+      if (!(prop in params)) {
+        return processedMessage;
+      }
+
+      const value = params[prop as keyof InterpolateParams];
+
+      if (typeof value === "string" || typeof value === "number") {
+        return processedMessage.replace(match, String(value));
+      }
+
+      return processedMessage;
+    }, newMessage);
+  }
 
   return newMessage;
 }
 
-export function t(key: string, params?: TranslationParams): string {
+export function t(key: string, params?: TranslateParams): string {
   const { translations, locale } = useLocale();
 
   if (!locale?.value || !translations?.value) {

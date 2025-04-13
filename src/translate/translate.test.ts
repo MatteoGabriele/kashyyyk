@@ -5,6 +5,8 @@ createI18n({
   locale: "en",
   translations: {
     en: {
+      apples:
+        "there are 0 apples | there is 1 apple | there are {count} apples",
       hello: "ciao",
       greeting: {
         hello: "ciao",
@@ -39,9 +41,9 @@ describe("translate", () => {
     );
   });
 
-  // it.todo("should translate with counters", () => {
-  //   expect(t("counting", { count: 0 })).toEqual("there are 0 numbers");
-  //   expect(t("counting", { count: 1 })).toEqual("there is 1 number");
-  //   expect(t("counting", { count: 5 })).toEqual("there are 5 numbers");
-  // });
+  it("should translate with counters", () => {
+    expect(t("apples", { count: 0 })).toEqual("there are 0 apples");
+    expect(t("apples", { count: 1 })).toEqual("there is 1 apple");
+    expect(t("apples", { count: 5 })).toEqual("there are 5 apples");
+  });
 });
