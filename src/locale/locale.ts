@@ -1,4 +1,4 @@
-import { type ComputedRef, type Reactive, computed, reactive } from "vue";
+import { type Reactive, reactive } from "vue";
 
 export type TranslationParams = {
   [key: string]: string | TranslationParams;
@@ -15,35 +15,10 @@ export type State = {
   translations: Translations | undefined;
 };
 
-const state: Reactive<State> = reactive({
+export const state: Reactive<State> = reactive({
   locale: undefined,
   translations: undefined,
 });
-
-export type UseLocaleReturn = {
-  changeLocale: (locale: Locale) => void;
-  locale: ComputedRef<State["locale"]>;
-  translations: ComputedRef<State["translations"]>;
-};
-
-export function useLocale(): UseLocaleReturn {
-  function changeLocale(locale: Locale): void {
-    if (state.locale === locale) {
-      return;
-    }
-
-    state.locale = locale;
-  }
-
-  const locale = computed(() => state.locale);
-  const translations = computed(() => state.translations);
-
-  return {
-    locale,
-    translations,
-    changeLocale,
-  };
-}
 
 export function updateState(newState: Partial<State>): void {
   Object.assign(state, newState);

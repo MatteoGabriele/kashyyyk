@@ -1,4 +1,5 @@
-import { type TranslationParams, useLocale } from "@/locale";
+import type { TranslationParams } from "@/locale";
+import { useI18n } from "@/use-i18n";
 import { get } from "@/utils";
 
 export type InterpolateParams = TranslationParams | { count: number };
@@ -50,7 +51,7 @@ function interpolate(message: string, params: InterpolateParams): string {
 }
 
 export function t(key: string, params?: TranslateParams): string {
-  const { translations, locale } = useLocale();
+  const { translations, locale } = useI18n();
 
   if (!locale?.value || !translations?.value) {
     return key;
