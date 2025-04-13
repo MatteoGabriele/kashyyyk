@@ -12,9 +12,16 @@
   </a>
 </p>
 
-# Kashyyyk
+# kashyyyk
 
-A simple and lightweight i18n library designed to make internationalization easy
+A simple internationalization (i18n) Vuejs plugin designed to be minimal and lightweight
+
+## Highlights
+- Translate supporting nested objects, custom properties, and pluralization
+- Small bundle size at less than 700 bytes
+- Yes, when I came out with the [name](https://starwars.fandom.com/wiki/Kashyyyk/Legends), I was watching Star Wars
+
+### Installation
 
 ```sh
 pnpm add kashyyyk
@@ -37,7 +44,7 @@ createI18n({
   },
 });
 ```
-Use the "t" function to render the translation based on the current selected locale
+Use the "t" function to render the translation based on the currently selected locale
 ```html
 <script setup lang="ts">
 import { t } from "kashyyyk";
@@ -49,7 +56,7 @@ import { t } from "kashyyyk";
 ```
 
 ## Other usages
-Translation object accepts custom variables and also counters
+Translation object accepts custom variables and pluralization
 ```js
 import { createI18n } from "kashyyyk";
 
