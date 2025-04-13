@@ -1,7 +1,7 @@
 {
   "name": "kashyyyk",
-  "description": "A simple internationalization Vuejs plugin designed to be minimal and lightweight",
-  "version": "0.5.2",
+  "description": "Minimal and lightweight internationalization plugin for Vuejs",
+  "version": "0.5.3",
   "type": "module",
   "author": {
     "name": "Matteo Gabriele",

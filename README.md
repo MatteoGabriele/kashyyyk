@@ -13,8 +13,7 @@
 </p>
 
 # kashyyyk
-
-A simple internationalization (i18n) Vuejs plugin designed to be minimal and lightweight
+Minimal and lightweight internationalization plugin for Vuejs
 
 ## Highlights
 - Translate supporting nested objects, custom properties, and pluralization
