@@ -147,3 +147,8 @@ createI18n({
 </template>
 ```
 
+## Issues and feature requests
+
+Please report any issues or feature requests you encounter. [https://github.com/MatteoGabriele/kashyyyk/issues](https://github.com/MatteoGabriele/kashyyyk/issues)
+
+Follow me on Bluesky at [matteogabriele.bsky.social](https://bsky.app/profile/matteogabriele.bsky.social) for updates
