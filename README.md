@@ -2,13 +2,10 @@
   <img src="https://i.imgur.com/RebkXfu.png" width="250" />
   <br>
   <a href="https://npm.im/kashyyyk">
-    <img src="https://badgen.net/npm/v/kashyyyk">
-  </a>
-  <a href="https://npm.im/kashyyyk">
-    <img src="https://badgen.net/npm/dm/kashyyyk?color=blue">
+    <img src="https://img.shields.io/npm/v/kashyyyk">
   </a>
   <a href="https://bundlephobia.com/result?p=kashyyyk">
-    <img src="https://badgen.net/bundlephobia/minzip/kashyyyk">
+    <img src="https://img.shields.io/bundlephobia/minzip/kashyyyk/latest">
   </a>
 </p>
 
