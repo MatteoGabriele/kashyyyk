@@ -14,6 +14,7 @@ Minimal and lightweight internationalization plugin for Vuejs
 
 ## Highlights
 - Translate supporting nested objects, custom properties, and pluralization
+- Compatible with SSR applications
 - Small bundle size at less than 700 bytes
 
 ### Installation
