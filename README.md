@@ -18,6 +18,9 @@ Minimal and lightweight internationalization plugin for Vuejs
 - No additional dependencies
 - Small bundle size at less than 700 bytes
 
+### Playground
+A small [sandbox](https://codesandbox.io/p/sandbox/rwllm9) to play around with the library
+
 ### Installation
 
 ```sh
