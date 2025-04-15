@@ -1,4 +1,4 @@
-import { type Reactive, reactive } from "vue";
+import { reactive } from "vue";
 
 export type TranslationParams = {
   [key: string]: string | TranslationParams;
@@ -15,7 +15,7 @@ export type State = {
   translations: Translations | undefined;
 };
 
-export const state: Reactive<State> = reactive({
+export const state = reactive<State>({
   locale: undefined,
   translations: undefined,
 });

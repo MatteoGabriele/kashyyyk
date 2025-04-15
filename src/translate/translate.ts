@@ -5,6 +5,8 @@ import { get } from "@/utils";
 export type InterpolateParams = TranslationParams | { count: number };
 export type TranslateParams = InterpolateParams;
 
+const CURLY_BRACES_REGEX = /\{.*?}s?/g;
+
 function interpolate(message: string, params: InterpolateParams): string {
   if (!params) {
     return message;
@@ -26,8 +28,7 @@ function interpolate(message: string, params: InterpolateParams): string {
     }
   }
 
-  const betweenCurlyBracesRegEx = new RegExp(/\{.*?}s?/g);
-  const matchedCurlies = message.match(betweenCurlyBracesRegEx);
+  const matchedCurlies = message.match(CURLY_BRACES_REGEX);
 
   if (matchedCurlies) {
     newMessage = matchedCurlies.reduce((processedMessage, match) => {
