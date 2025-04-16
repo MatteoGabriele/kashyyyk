@@ -1,4 +1,4 @@
-import { type State, updateState } from "@/locale";
+import { type State, updateState } from "@/locale/locale";
 
 export type CreateI18nSettings = Partial<State> &
   Required<Pick<State, "translations" | "locale">>;

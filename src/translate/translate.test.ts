@@ -1,5 +1,5 @@
-import { createI18n } from "@/create-i18n";
-import { t } from "@/translate";
+import { createI18n } from "@/create-i18n/create-i18n";
+import { t } from "@/translate/translate";
 
 createI18n({
   locale: "en",

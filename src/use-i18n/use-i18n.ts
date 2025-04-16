@@ -1,5 +1,5 @@
-import { type State, state } from "@/locale";
-import { t } from "@/translate";
+import { type State, state } from "@/locale/locale";
+import { t } from "@/translate/translate";
 import { type Ref, toRefs } from "vue";
 
 export type UseI18nReturn = {
