@@ -1,4 +1,3 @@
-// Create a new file for translate.ts in the src directory
 import type { TranslationParams } from "@/locale";
 import { useI18n } from "@/use-i18n";
 import { get } from "@/utils";

@@ -1,4 +1,3 @@
-// Create a new file for translate.test.ts in the src directory
 import { createI18n } from "@/create-i18n";
 import { t } from "@/translate";
 

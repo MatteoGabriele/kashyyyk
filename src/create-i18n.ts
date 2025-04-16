@@ -1,4 +1,3 @@
-// Create a new file for create-i18n.ts in the src directory
 import { type State, setState } from "@/locale";
 
 export type CreateI18nSettings = Partial<State> &

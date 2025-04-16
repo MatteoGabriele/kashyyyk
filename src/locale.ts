@@ -1,4 +1,3 @@
-// Create a new file for locale.ts in the src directory
 import { reactive } from "vue";
 
 export type TranslationParams = {
