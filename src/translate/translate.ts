@@ -31,20 +31,20 @@ function interpolate(message: string, params: InterpolateParams): string {
   const matchedCurlies = message.match(CURLY_BRACES_REGEX);
 
   if (matchedCurlies) {
-    newMessage = matchedCurlies.reduce((processedMessage, match) => {
-      const prop = match.slice(1, -1);
+    newMessage = matchedCurlies.reduce((processedMessage, curlyBraceMatch) => {
+      const paramKey = curlyBraceMatch.slice(1, -1);
 
-      if (!(prop in params)) {
+      if (!(paramKey in params)) {
         return processedMessage;
       }
 
-      const value = params[prop as keyof InterpolateParams];
+      const paramValue = params[paramKey as keyof InterpolateParams];
 
-      if (typeof value === "string" || typeof value === "number") {
-        return processedMessage.replace(match, String(value));
+      if (typeof paramValue !== "string" && typeof paramValue !== "number") {
+        return processedMessage;
       }
 
-      return processedMessage;
+      return processedMessage.replace(curlyBraceMatch, String(paramValue));
     }, newMessage);
   }
 
