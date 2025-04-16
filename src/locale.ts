@@ -21,6 +21,6 @@ export const state = reactive<State>({
   translations: undefined,
 });
 
-export function updateState(newState: Partial<State>): void {
+export function setState(newState: Partial<State>): void {
   Object.assign(state, newState);
 }

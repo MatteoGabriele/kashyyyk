@@ -1,12 +1,12 @@
 // Create a new file for translate.ts in the src directory
-import type { TranslationParams } from "./locale";
-import { useI18n } from "./use-i18n";
-import { get } from "./utils";
+import type { TranslationParams } from "@/locale";
+import { useI18n } from "@/use-i18n";
+import { get } from "@/utils";
 
 export type InterpolateParams = TranslationParams | { count: number };
 export type TranslateParams = InterpolateParams;
 
-const CURLY_BRACES_REGEX = /\{.*?}s?/g;
+const CURLY_BRACES_REGEX = /\{(.*?)}/g;
 
 function interpolate(message: string, params: InterpolateParams): string {
   if (!params) {
