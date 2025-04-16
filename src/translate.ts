@@ -1,8 +1,8 @@
-import type { TranslationParams } from "@/locale";
+import type { Translation } from "@/config";
 import { useI18n } from "@/use-i18n";
 import { get } from "@/utils";
 
-export type InterpolateParams = TranslationParams | { count: number };
+export type InterpolateParams = Translation | { count: number };
 export type TranslateParams = InterpolateParams;
 
 const CURLY_BRACES_REGEX = /\{(.*?)}/g;

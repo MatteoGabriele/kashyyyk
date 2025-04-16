@@ -1,8 +1,5 @@
-import { type State, setState } from "@/locale";
+import { type Config, setConfig } from "@/config";
 
-export type CreateI18nSettings = Partial<State> &
-  Required<Pick<State, "translations" | "locale">>;
-
-export function createI18n(settings: CreateI18nSettings) {
-  setState(settings);
+export function createI18n(config: Partial<Config>): Config {
+  return setConfig(config);
 }
