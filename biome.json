@@ -26,7 +26,11 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "performance": {
+        "noBarrelFile": "error",
+        "noReExportAll": "error"
+      }
     }
   },
   "javascript": {

@@ -1,11 +1,10 @@
-import type { TranslationParams } from "@/locale";
-import { useI18n } from "@/use-i18n";
+import { type Translation, globalConfig } from "@/config";
 import { get } from "@/utils";
 
-export type InterpolateParams = TranslationParams | { count: number };
+export type InterpolateParams = Translation | { count: number };
 export type TranslateParams = InterpolateParams;
 
-const CURLY_BRACES_REGEX = /\{.*?}s?/g;
+const CURLY_BRACES_REGEX = /\{(.*?)}/g;
 
 function interpolate(message: string, params: InterpolateParams): string {
   if (!params) {
@@ -28,23 +27,23 @@ function interpolate(message: string, params: InterpolateParams): string {
     }
   }
 
-  const matchedCurlies = message.match(CURLY_BRACES_REGEX);
+  const matched = message.match(CURLY_BRACES_REGEX);
 
-  if (matchedCurlies) {
-    newMessage = matchedCurlies.reduce((processedMessage, curlyBraceMatch) => {
-      const paramKey = curlyBraceMatch.slice(1, -1);
+  if (matched) {
+    newMessage = matched.reduce((acc, match) => {
+      const paramKey = match.slice(1, -1);
 
       if (!(paramKey in params)) {
-        return processedMessage;
+        return acc;
       }
 
       const paramValue = params[paramKey as keyof InterpolateParams];
 
       if (typeof paramValue !== "string" && typeof paramValue !== "number") {
-        return processedMessage;
+        return acc;
       }
 
-      return processedMessage.replace(curlyBraceMatch, String(paramValue));
+      return acc.replace(match, String(paramValue));
     }, newMessage);
   }
 
@@ -52,13 +51,13 @@ function interpolate(message: string, params: InterpolateParams): string {
 }
 
 export function t(key: string, params?: TranslateParams): string {
-  const { translations, locale } = useI18n();
+  const translationValue: Translation | undefined = globalConfig.locale
+    ? globalConfig.translations[globalConfig.locale]
+    : undefined;
 
-  if (!locale?.value || !translations?.value) {
+  if (!translationValue) {
     return key;
   }
-
-  const translationValue = translations.value[locale.value];
 
   if (!translationValue || typeof translationValue === "string") {
     return key;
