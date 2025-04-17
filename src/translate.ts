@@ -1,5 +1,4 @@
-import type { Translation } from "@/config";
-import { useI18n } from "@/use-i18n";
+import { type Translation, globalConfig } from "@/config";
 import { get } from "@/utils";
 
 export type InterpolateParams = Translation | { count: number };
@@ -28,10 +27,10 @@ function interpolate(message: string, params: InterpolateParams): string {
     }
   }
 
-  const matchedCurlies = message.match(CURLY_BRACES_REGEX);
+  const matched = message.match(CURLY_BRACES_REGEX);
 
-  if (matchedCurlies) {
-    newMessage = matchedCurlies.reduce((acc, match) => {
+  if (matched) {
+    newMessage = matched.reduce((acc, match) => {
       const paramKey = match.slice(1, -1);
 
       if (!(paramKey in params)) {
@@ -52,13 +51,13 @@ function interpolate(message: string, params: InterpolateParams): string {
 }
 
 export function t(key: string, params?: TranslateParams): string {
-  const { translations, locale } = useI18n();
+  const translationValue: Translation | undefined = globalConfig.locale
+    ? globalConfig.translations[globalConfig.locale]
+    : undefined;
 
-  if (!locale?.value || !translations?.value) {
+  if (!translationValue) {
     return key;
   }
-
-  const translationValue = translations.value[locale.value];
 
   if (!translationValue || typeof translationValue === "string") {
     return key;
