@@ -1,8 +1,9 @@
 {
   "name": "kashyyyk",
   "description": "Minimal and lightweight internationalization plugin for Vuejs",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "type": "module",
+  "license": "MIT",
   "author": {
     "name": "Matteo Gabriele",
     "email": "m.gabriele.dev@gmail.com"
