@@ -2,21 +2,20 @@
   <img src="https://i.imgur.com/RebkXfu.png" width="250" />
   <br>
   <a href="https://www.npmjs.com/package/kashyyyk">
-  <img src="https://img.shields.io/npm/v/kashyyyk" alt="npm version" />
-</a>
-<a href="https://github.com/MatteoGabriele/kashyyyk/blob/main/LICENSE">
-  <img src="https://img.shields.io/npm/l/kashyyyk" alt="license" />
-</a>
-<a href="https://bundlephobia.com/package/kashyyyk">
-  <img src="https://img.shields.io/bundlephobia/minzip/kashyyyk" alt="bundle size" />
-</a>
-<a href="https://www.typescriptlang.org/">
-  <img src="https://img.shields.io/badge/TypeScript-%E2%9C%93-blue" alt="TypeScript" />
-</a>
-<a href="https://vuejs.org/">
-  <img src="https://img.shields.io/badge/Vue-3.x-brightgreen" alt="Vue 3" />
-</a>
-
+    <img src="https://img.shields.io/npm/v/kashyyyk" alt="npm version" />
+  </a>
+  <a href="https://bundlephobia.com/package/kashyyyk">
+    <img src="https://img.shields.io/bundlephobia/minzip/kashyyyk" alt="bundle size" />
+  </a>
+  <a href="https://www.typescriptlang.org/">
+    <img src="https://img.shields.io/badge/TypeScript-%E2%9C%93-blue" alt="TypeScript" />
+  </a>
+  <a href="https://vuejs.org/">
+    <img src="https://img.shields.io/badge/Vue-3.x-brightgreen" alt="Vue 3" />
+  </a>
+  <a href="https://github.com/MatteoGabriele/kashyyyk/blob/main/LICENSE">
+    <img src="https://img.shields.io/npm/l/kashyyyk" alt="license" />
+  </a>
 </p>
 
  
