@@ -4,9 +4,6 @@
   <a href="https://npm.im/kashyyyk">
     <img src="https://img.shields.io/npm/v/kashyyyk">
   </a>
-  <a href="https://bundlephobia.com/result?p=kashyyyk">
-    <img src="https://img.shields.io/bundlephobia/minzip/kashyyyk/latest">
-  </a>
 </p>
 
 # kashyyyk
@@ -16,7 +13,7 @@ Minimal and lightweight internationalization plugin for Vuejs
 - Translate supporting nested objects, custom properties, and pluralization
 - Compatible with SSR applications
 - No additional dependencies
-- Small bundle size at less than 700 bytes
+- Small bundle size of less than 700 bytes
 
 ### Playground
 A small [sandbox](https://codesandbox.io/p/sandbox/rwllm9) to play around with the library
