@@ -4,7 +4,7 @@
   <a href="https://www.npmjs.com/package/kashyyyk">
   <img src="https://img.shields.io/npm/v/kashyyyk" alt="npm version" />
 </a>
-<a href="https://github.com/your-username/kashyyyk/blob/main/LICENSE">
+<a href="https://github.com/MatteoGabriele/kashyyyk/blob/main/LICENSE">
   <img src="https://img.shields.io/npm/l/kashyyyk" alt="license" />
 </a>
 <a href="https://bundlephobia.com/package/kashyyyk">
