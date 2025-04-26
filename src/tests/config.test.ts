@@ -1,4 +1,4 @@
-import { globalConfig, resetConfig, setConfig } from "./config";
+import { globalConfig, resetConfig, setConfig } from "@/config";
 
 describe("config", () => {
   beforeEach(resetConfig);
