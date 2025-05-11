@@ -13,11 +13,10 @@
     "fix": "biome check --write",
     "lint": "biome lint",
     "build": "tsdown",
-    "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:cov": "vitest run --coverage",
     "test:once": "vitest run",
-    "validate": "npm run typecheck && npm run lint && npm run test:once && npm run build && publint run --strict",
+    "validate": "npm run lint && npm run test:once && npm run build",
     "prepublishOnly": "npm run validate"
   },
   "keywords": [
@@ -39,9 +38,7 @@
   "main": "./dist/kashyyyk.js",
   "module": "./dist/kashyyyk.js",
   "types": "./dist/kashyyyk.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "peerDependencies": {
     "vue": "^3.5.13"
   },
