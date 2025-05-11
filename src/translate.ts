@@ -1,4 +1,9 @@
-import { type Translation, globalConfig } from "@/config";
+import {
+  type Locale,
+  type Translation,
+  type Translations,
+  globalConfig,
+} from "@/config";
 import { get } from "@/utils";
 
 export type InterpolateParams = Translation | { count: number };
@@ -50,28 +55,41 @@ function interpolate(message: string, params: InterpolateParams): string {
   return newMessage;
 }
 
-export function t(key: string, params?: TranslateParams): string {
-  const translationValue: Translation | undefined = globalConfig.locale
-    ? globalConfig.translations[globalConfig.locale]
+export type Translate = (key: string, params?: TranslateParams) => string;
+
+export function createTranslate(
+  translations: Translations,
+  locale?: Locale,
+): Translate {
+  const translation = locale ? translations[locale] : undefined;
+  const globalTranslation = locale
+    ? globalConfig.translations[locale]
     : undefined;
 
-  if (!translationValue) {
-    return key;
-  }
+  return (key, params) => {
+    if (!translation) {
+      return key;
+    }
 
-  if (!translationValue || typeof translationValue === "string") {
-    return key;
-  }
+    if (!translation || typeof translation === "string") {
+      return key;
+    }
 
-  const value = get(key, translationValue);
+    let value = get(key, translation);
+    const globalValue = get(key, globalTranslation ?? {});
 
-  if (value === "") {
-    return key;
-  }
+    if (value === key) {
+      value = globalValue;
+    }
 
-  if (params) {
-    return interpolate(value, params);
-  }
+    if (value === "") {
+      return key;
+    }
 
-  return value;
+    if (params) {
+      return interpolate(value, params);
+    }
+
+    return value;
+  };
 }

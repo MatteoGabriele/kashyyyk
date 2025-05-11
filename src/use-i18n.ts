@@ -1,14 +1,17 @@
-import { type Config, globalConfig } from "@/config";
-import { t } from "@/translate";
+import { type Config, type Translations, globalConfig } from "@/config";
+import { type Translate, createTranslate } from "@/translate";
 import { type Ref, toRefs } from "vue";
 
 export type UseI18nReturn = {
   locale: Ref<Config["locale"]>;
   translations: Ref<Config["translations"]>;
-  t: typeof t;
+  t: Translate;
 };
 
-export function useI18n(): UseI18nReturn {
+export function useI18n(localTranslation?: Translations): UseI18nReturn {
+  const translations = localTranslation ?? globalConfig.translations;
+  const t = createTranslate(translations, globalConfig.locale);
+
   return {
     ...toRefs(globalConfig),
     t,
