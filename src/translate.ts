@@ -55,39 +55,49 @@ function interpolate(message: string, params: InterpolateParams): string {
   return newMessage;
 }
 
-export type Translate = (key: string, params?: TranslateParams) => string;
+function translate(
+  key: string,
+  params?: TranslateParams,
+  translation?: Translation,
+): string {
+  if (!translation) {
+    return key;
+  }
+
+  if (!translation || typeof translation === "string") {
+    return key;
+  }
+
+  const value = get(key, translation);
+
+  if (value === "") {
+    return key;
+  }
+
+  if (params) {
+    return interpolate(value, params);
+  }
+
+  return value;
+}
+
+export type Translate = typeof translate;
 
 export function createTranslate(
   translations: Translations,
   locale?: Locale,
 ): Translate {
   const translation = locale ? translations[locale] : undefined;
-  const globalTranslation = locale
-    ? globalConfig.translations[locale]
-    : undefined;
 
   return (key, params) => {
-    if (!translation) {
-      return key;
-    }
-
-    if (!translation || typeof translation === "string") {
-      return key;
-    }
-
-    let value = get(key, translation);
-    const globalValue = get(key, globalTranslation ?? {});
+    const value = translate(key, params, translation);
 
     if (value === key) {
-      value = globalValue;
-    }
+      const globalTranslation = locale
+        ? globalConfig.translations[locale]
+        : undefined;
 
-    if (value === "") {
-      return key;
-    }
-
-    if (params) {
-      return interpolate(value, params);
+      return translate(key, params, globalTranslation);
     }
 
     return value;
