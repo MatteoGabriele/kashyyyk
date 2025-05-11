@@ -11,12 +11,12 @@ export type Translations = {
 };
 
 export type Config = {
-  locale: Locale | undefined;
-  translations: Translations;
+  locale: Locale;
+  translations?: Translations;
 };
 
 const defaultGlobalConfig = {
-  locale: undefined,
+  locale: "en",
   translations: {},
 } as const;
 
