@@ -8,9 +8,8 @@ export type UseI18nReturn = {
   t: Translate;
 };
 
-export function useI18n(localTranslation?: Translations): UseI18nReturn {
-  const translations = localTranslation ?? globalConfig.translations;
-  const t = createTranslate(translations, globalConfig.locale);
+export function useI18n(localTranslations?: Translations): UseI18nReturn {
+  const t = createTranslate(localTranslations);
 
   return {
     ...toRefs(globalConfig),

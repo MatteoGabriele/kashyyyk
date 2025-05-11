@@ -83,13 +83,12 @@ function translate(
 
 export type Translate = typeof translate;
 
-export function createTranslate(
-  translations: Translations,
-  locale?: Locale,
-): Translate {
-  const translation = locale ? translations[locale] : undefined;
-
+export function createTranslate(translations?: Translations): Translate {
   return (key, params) => {
+    const locale = globalConfig.locale;
+    const translation =
+      locale && translations ? translations[locale] : undefined;
+
     const value = translate(key, params, translation);
 
     if (value === key) {

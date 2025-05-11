@@ -1,25 +1,27 @@
+import { createI18n } from "@/create-i18n";
 import { type Translate, createTranslate } from "@/translate";
 
 describe("translate", () => {
   let t: Translate;
 
   beforeEach(() => {
-    t = createTranslate(
-      {
-        en: {
-          apples:
-            "there are 0 apples | there is 1 apple | there are {count} apples",
+    createI18n({
+      locale: "en",
+    });
+
+    t = createTranslate({
+      en: {
+        apples:
+          "there are 0 apples | there is 1 apple | there are {count} apples",
+        hello: "ciao",
+        greeting: {
           hello: "ciao",
-          greeting: {
-            hello: "ciao",
-          },
-          dynamicGreeting: {
-            hello: "ciao, {name}",
-          },
+        },
+        dynamicGreeting: {
+          hello: "ciao, {name}",
         },
       },
-      "en",
-    );
+    });
   });
 
   it("should translate from a single key", () => {
