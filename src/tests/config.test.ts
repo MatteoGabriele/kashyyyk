@@ -5,19 +5,19 @@ describe("config", () => {
 
   it("should update the config properties", () => {
     setConfig({
-      locale: "en",
+      locale: "it",
       translations: {
-        en: {
-          greetings: "hello",
+        it: {
+          greetings: "ciao",
         },
       },
     });
 
     expect(globalConfig).toEqual({
-      locale: "en",
+      locale: "it",
       translations: {
-        en: {
-          greetings: "hello",
+        it: {
+          greetings: "ciao",
         },
       },
     });
@@ -25,7 +25,7 @@ describe("config", () => {
 
   it("should return the config properties", () => {
     expect(globalConfig).toEqual({
-      locale: undefined,
+      locale: "en",
       translations: {},
     });
   });
