@@ -1,12 +1,16 @@
 import { createI18n } from "@/create-i18n";
-import { type Translate, createTranslate } from "@/translate";
+import {
+  type CreateTranslateReturn,
+  createTranslate,
+} from "@/create-translate";
 
 describe("translate", () => {
-  let t: Translate;
+  let t: CreateTranslateReturn;
 
   beforeEach(() => {
     createI18n({
       locale: "en",
+      translations: {},
     });
 
     t = createTranslate({

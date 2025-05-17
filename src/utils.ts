@@ -1,3 +1,9 @@
+import type { Ref } from "vue";
+
+export type ObjectValuesToRefs<T extends object> = {
+  [K in keyof T]: Ref<T[K]>;
+};
+
 export type Obj = {
   [key: string]: string | Obj;
 };

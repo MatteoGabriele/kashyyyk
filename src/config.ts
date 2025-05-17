@@ -12,7 +12,7 @@ export type Translations = {
 
 export type Config = {
   locale: Locale;
-  translations?: Translations;
+  translations: Translations;
 };
 
 const defaultGlobalConfig = {
