@@ -32,13 +32,12 @@ export default function interpolate(
 
   if (matched) {
     newMessage = matched.reduce((acc, match) => {
-      const paramKey = match.slice(1, -1);
+      const paramKey = match.slice(1, -1) as keyof InterpolableParams;
+      const paramValue = params[paramKey];
 
-      if (!(paramKey in params)) {
+      if (!paramValue) {
         return acc;
       }
-
-      const paramValue = params[paramKey as keyof InterpolableParams];
 
       if (typeof paramValue !== "string" && typeof paramValue !== "number") {
         return acc;
