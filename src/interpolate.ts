@@ -2,8 +2,6 @@ import type { Translation } from "@/config";
 
 export type InterpolableParams = Translation | { count: number };
 
-const CURLY_BRACES_REGEX = /\{(.*?)}/g;
-
 export default function interpolate(
   message: string,
   params: InterpolableParams,
@@ -28,23 +26,9 @@ export default function interpolate(
     }
   }
 
-  const matched = message.match(CURLY_BRACES_REGEX);
-
-  if (matched) {
-    newMessage = matched.reduce((acc, match) => {
-      const paramKey = match.slice(1, -1) as keyof InterpolableParams;
-      const paramValue = params[paramKey];
-
-      if (!paramValue) {
-        return acc;
-      }
-
-      if (typeof paramValue !== "string" && typeof paramValue !== "number") {
-        return acc;
-      }
-
-      return acc.replace(match, String(paramValue));
-    }, newMessage);
+  for (const key in params) {
+    const value = String(params[key as keyof typeof params]);
+    newMessage = newMessage.split(`{${key}}`).join(value);
   }
 
   return newMessage;
