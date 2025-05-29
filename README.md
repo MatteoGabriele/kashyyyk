@@ -14,7 +14,7 @@
 
  
 # kashyyyk
-Minimal and lightweight internationalization plugin for Vuejs
+Minimal and lightweight i18n plugin for Vuejs
 
 ## Highlights
 - Translate supporting nested objects, custom properties, and pluralization
